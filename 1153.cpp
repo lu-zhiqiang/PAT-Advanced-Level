@@ -39,7 +39,6 @@ int main(){
 				if(v[j].t.substr(4, 6) == s) m[v[j].t.substr(1,3)]++; //分类计数器（按键的类别） 
 			//for(auto it : m) ans.push_back({it.first, it.second}); //这里应该用点还是用箭头？？？ 
 			for (auto it = m.begin(); it != m.end(); it++) ans.push_back({it->first, it->second});   
-
 		}
 		sort(ans.begin(), ans.end(), cmp);
 		for (int j = 0; j < ans.size(); j++)
