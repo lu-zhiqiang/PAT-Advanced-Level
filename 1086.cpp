@@ -25,17 +25,17 @@ int main(){
 			int num;
 			scanf("%d", &num); //接着输入结点值（题目中没有说结点值是否全部不同distinct） 
 			value.push_back(num); //将结点值写入value动态数组 
-			pre.push_back(key);	//但是结点键key的编号是从0开始的整数 
+			pre.push_back(key);	//结点键key的编号是从0开始的整数（这样便由输入得到了前序序列pre）
 			s.push(key++); //同时会将key压入栈
-			 
+			//这样其实也就建立了key-value（其中的num）一一对应的关系，key互不相同，序列以及栈存储的时候按key来，输出的时候根据对应关系输出value即可 
 		} else if(strlen(str) == 3){//情形2：输入pop 
-			in.push_back(s.top());//保存栈顶元素key 
+			in.push_back(s.top());//保存栈顶元素key到中序序列in中（这样便由输入得到了中序序列in） 
 			s.pop(); //移除栈顶元素key 
 		}
 	} 
-	postorder(0, 0, n - 1);
-	printf("%d", value[post[0]]);
+	postorder(0, 0, n - 1); //先序的根序号，中序的start和end 
+	printf("%d", value[post[0]]); 
 	for(int i = 1; i < n; i++)
-		printf(" %d",value[post[i]]);
+		printf(" %d",value[post[i]]);//输出后序存储的key值（即post[i]）对应的value值（即value[post[i]]） 
 	return 0; 
 } 
