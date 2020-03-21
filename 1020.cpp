@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostream> //这是中序和后序 转 前序 
 #include<algorithm>
 #include<vector>
 using namespace std;
@@ -10,10 +10,10 @@ bool cmp(node a, node b){
 } 
 vector<int> post,in;
 vector<node> ans;
-void pre(int root, int start, int end, int index){ 
+void pre(int root, int start, int end, int index){  //root是 后序 中的根位置，start是 中序 中的起始点，end是 中序 中的结束点 index是为了层序输出而设置的。 
 	if(start > end) return;//迭代终止的条件 
 	int i = start;
-	while (i < end && in[i] != post[root]) i++;
+	while (i < end && in[i] != post[root]) i++; //找到中序中根节点的下标 
 	ans.push_back({index, post[root]});//可以看出index是当前根节点的下标(从0开始)，因为每一个节点都会遍历成为一次根节点。  
 	pre(root - 1 - (end - i), start, i - 1, 2 * index + 1);
 	pre(root - 1, i + 1, end, 2 * index + 2);
